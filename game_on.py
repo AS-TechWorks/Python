@@ -1,6 +1,6 @@
 game_list = [0, 1, 2]
 
-def display_game(game_list):
+def display_game():
     print("Here is the current game list:")
     print(game_list)
 
@@ -21,11 +21,21 @@ def replace_value(pos):
 
 def game_on():
 
-    game_on = "Y"
-    while game_on == "Y":
-        pos = position_choice()
-        replace_value(pos)
-        display_game(game_list)
-        game_on = input("Want to continue(Y or N): ")
+    choice = "wrong"
+    while choice not in ["Y", "N"]:
+        choice = input("Want to continue playing game (Y/N): ")
+        
+        if choice not in ["Y", "N"]:
+            print("Incorrect input, please enter Y or N")
 
-game_on()
+    if choice == "Y":
+        return True
+    else:
+        return False
+
+display_game()
+while game_on():
+    pos = position_choice()
+    replace_value(pos)
+    display_game()
+    
